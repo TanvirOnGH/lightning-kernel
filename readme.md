@@ -1,5 +1,12 @@
-Linux kernel
-============
+## About
+
+Experimental linux kernel with custom patches applied from various sources, designed to be high performant.
+
+## Warning
+
+This is based on linux kernel version [6.3.13](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/?h=v6.3.13) (EOL). This release is stable and is End-of-Life with last update on 2023-07-11.
+
+## Linux kernel
 
 There are several guides for kernel developers and users. These guides can
 be rendered in a number of formats, like HTML and PDF. Please read
