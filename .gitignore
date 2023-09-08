@@ -171,3 +171,6 @@ sphinx_*/
 
 # Rust analyzer configuration
 /rust-project.json
+
+# Pre-commit hook
+!.pre-commit-config.yaml
