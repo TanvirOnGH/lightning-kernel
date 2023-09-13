@@ -1,42 +1,51 @@
 ## About
 
-Experimental linux kernel with custom patches applied from various sources, designed to be high performant.
+This project features a custom-built Linux kernel with patches sourced from various contributors, designed to deliver high performance.
 
-## Warning
+## ⚠️ Warning
 
-This is based on linux kernel version [6.3.13](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/?h=v6.3.13) (EOL). This release is stable and is End-of-Life with last update on 2023-07-11.
+**This repository is based on Linux Kernel version 6.3.13, which reached its End-of-Life (EOL) on 2023-07-11**. While it's a stable release, please be aware that it no longer receives updates or security patches from the official Linux Kernel maintainers.
 
-## Kernel patches source
+## Kernel Patches Source
+
+To access the collection of custom kernel patches used in this repository, visit:
 
 [sirlucjan/kernel-patches](https://github.com/sirlucjan/kernel-patches/tree/master/6.3)
 
-## Tips
-### Compiling with optimizations
+## Tips for Compilation with Optimizations
 
-You can set optimization flags by exporting environment variables in your terminal before running the make command. These flags tell the compiler to generate code tailored to your CPU architecture. We recommend using -march=native -mtune=native to optimize for your specific CPU.
+Enhance your Linux kernel's performance by compiling it with optimization flags tailored to your CPU architecture. Follow these steps:
+
+1. Export optimization flags in your terminal:
 
 ```bash
-export KCFLAGS=' -march=native -mtune=native'
-export KCPPFLAGS=' -march=native -mtune=native'
-make ...
+export KCFLAGS='-march=native -mtune=native'
+export KCPPFLAGS='-march=native -mtune=native'
 ```
 
-Replace `make ...` with your specific build commands and options. Keep in mind that while optimization can enhance performance, it may also result in longer compilation times.
+2. Compile the kernel using your specific build commands and options. Remember that optimization may result in longer compilation times.
 
-## Linux kernel
+```bash
+   make ...
+```
 
-There are several guides for kernel developers and users. These guides can
-be rendered in a number of formats, like HTML and PDF. Please read
-Documentation/admin-guide/README.rst first.
+## Additional Resources
 
-In order to build the documentation, use ``make htmldocs`` or
-``make pdfdocs``.  The formatted documentation can also be read online at:
+For further guidance on Linux Kernel development and usage, consult the following resources:
 
-    https://www.kernel.org/doc/html/latest/
+- **Kernel Documentation**: Explore detailed guides and documentation, available in various formats, such as HTML and PDF. Start with [Documentation/admin-guide/README.rst](Documentation/admin-guide/README.rst).
 
-There are various text files in the Documentation/ subdirectory,
-several of them using the Restructured Text markup notation.
+- **Build Documentation**: To generate documentation, use the following commands:
+  
+```bash
+make htmldocs   # Generate HTML documentation
+make pdfdocs    # Generate PDF documentation
+```
 
-Please read the Documentation/process/changes.rst file, as it contains the
-requirements for building and running the kernel, and information about
-the problems which may result by upgrading your kernel.
+   You can also access the formatted documentation online at [Kernel Documentation](https://www.kernel.org/doc/html/latest/).
+
+- **Text Files**: In the `Documentation/` subdirectory, you'll find various text files, some using the Restructured Text markup notation.
+
+- **Kernel Requirements**: Refer to [Documentation/process/changes.rst](Documentation/process/changes.rst) for information about building and running the kernel, as well as potential issues that may arise during an upgrade.
+
+Feel free to explore and experiment with this customized Linux Kernel, keeping in mind the EOL status of the base version and the optimizations available for enhanced performance.
