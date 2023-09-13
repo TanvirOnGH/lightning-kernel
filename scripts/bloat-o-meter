@@ -27,11 +27,8 @@ re_NUMBER = re.compile(r'\.[0-9]+')
 
 def getsizes(file, format):
     sym = {}
-    nm = "nm"
-    if args.prefix:
-        nm = "{}nm".format(args.prefix)
-
-    with os.popen("{} --size-sort {}".format(nm, file)) as f:
+    nm = f"{args.prefix}nm" if args.prefix else "nm"
+    with os.popen(f"{nm} --size-sort {file}") as f:
         for line in f:
             if line.startswith("\n") or ":" in line:
                 continue
@@ -87,16 +84,14 @@ def print_result(symboltype, symbolformat):
     grow, shrink, add, remove, up, down, delta, old, new, otot, ntot = \
     calc(args.file1, args.file2, symbolformat)
 
-    print("add/remove: %s/%s grow/shrink: %s/%s up/down: %s/%s (%s)" % \
-          (add, remove, grow, shrink, up, -down, up-down))
+    print(
+        f"add/remove: {add}/{remove} grow/shrink: {grow}/{shrink} up/down: {up}/{-down} ({up - down})"
+    )
     print("%-40s %7s %7s %+7s" % (symboltype, "old", "new", "delta"))
     for d, n in delta:
         if d: print("%-40s %7s %7s %+7d" % (n, old.get(n,"-"), new.get(n,"-"), d))
 
-    if otot:
-        percent = (ntot - otot) * 100.0 / otot
-    else:
-        percent = 0
+    percent = (ntot - otot) * 100.0 / otot if otot else 0
     print("Total: Before=%d, After=%d, chg %+.2f%%" % (otot, ntot, percent))
 
 if args.c:
