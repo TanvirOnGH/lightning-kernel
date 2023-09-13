@@ -1,4 +1,4 @@
-# Some recommended kernel option tweaks for my system: NSA
+# Some recommended kernel option tweaks for my system: Hadamard
 # check via: zcat /proc/config.gz
 kernelParams = ["quiet" "mitigations=off" "numa=off" "idle=poll"];
 MNATIVE_AMD y
