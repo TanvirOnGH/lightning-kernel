@@ -10,6 +10,19 @@ This is based on linux kernel version [6.3.13](https://git.kernel.org/pub/scm/li
 
 [sirlucjan/kernel-patches](https://github.com/sirlucjan/kernel-patches/tree/master/6.3)
 
+## Tips
+### Compiling with optimizations
+
+You can set optimization flags by exporting environment variables in your terminal before running the make command. These flags tell the compiler to generate code tailored to your CPU architecture. We recommend using -march=native -mtune=native to optimize for your specific CPU.
+
+```bash
+export KCFLAGS=' -march=native -mtune=native'
+export KCPPFLAGS=' -march=native -mtune=native'
+make ...
+```
+
+Replace `make ...` with your specific build commands and options. Keep in mind that while optimization can enhance performance, it may also result in longer compilation times.
+
 ## Linux kernel
 
 There are several guides for kernel developers and users. These guides can
