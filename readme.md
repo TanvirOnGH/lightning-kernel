@@ -19,8 +19,10 @@ Enhance your Linux kernel's performance by compiling it with optimization flags 
 1. Export optimization flags in your terminal:
 
 ```bash
-export KCFLAGS='-march=native -mtune=native'
-export KCPPFLAGS='-march=native -mtune=native'
+# for more options: <https://docs.kernel.org/kbuild/kbuild.html>
+export KCFLAGS="-march=native -mtune=native"
+export KCPPFLAGS="-march=native -mtune=native"
+export KRUSTFLAGS="-C target-cpu=native -C debug-assertions=n -C debuginfo=0 -C link-dead-code=n -C strip=symbols"
 ```
 
 2. Compile the kernel using your specific build commands and options. Remember that optimization may result in longer compilation times.
