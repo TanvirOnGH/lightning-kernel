@@ -1,0 +1,29 @@
+name: Checkpatch C
+on:
+  push:
+  pull_request:
+    paths:
+      - "**.c"
+      - "**.h"
+  workflow_dispatch:
+
+jobs:
+  check-code-format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Perl
+        run: |
+          sudo apt update
+          sudo apt install perl
+        shell: bash
+
+      - name: Run checkpatch.pl
+        run: |
+          for file in $(find . -name "*.c" -o -name "*.h"); do
+            scripts/checkpatch.pl -f --no-tree $file
+          done
+        shell: bash
